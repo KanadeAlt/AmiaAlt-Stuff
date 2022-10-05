@@ -1,4 +1,5 @@
-baseURL = ""
+# baseURL = "https://linuxhub-group.gitlab.io"
+relativeURLs = true
 languageCode = "zh-cn"
 title = "KanariaAlt"
 theme = "github-style"
@@ -7,6 +8,7 @@ pygmentsCodeFences = true
 pygmentsUseClasses = true
 
 [params]
+  searchURL = "https://linuxhub-group.gitlab.io"
   author = "LinuxHub"
   description = "In solitude, where we are least alone."
   github = "LinuxHub-Group"
