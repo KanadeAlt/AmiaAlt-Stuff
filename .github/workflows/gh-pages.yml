@@ -54,11 +54,11 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: my-artifact
           path: ./public
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         id: restore-build
         with:
           path: ./public
