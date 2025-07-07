@@ -21,9 +21,9 @@ pygmentsUseClasses = true
   rss = true
   lastmod = true
   userStatusEmoji = "🥵"
-  favicon = "/images/github.png"
+  favicon = "images/github.png"
   location = "Japan"
-  enableGitalk = true
+  enableGitalk = false
 
 #   [params.gitalk]
 #     clientID = "Your client ID" 

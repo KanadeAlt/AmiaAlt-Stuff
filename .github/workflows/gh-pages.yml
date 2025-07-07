@@ -50,11 +50,19 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: ./public
+      - uses: actions/cache@v2
+        id: restore-build
+        with:
+          path: ./public
+          key: "hugo-build"
 
       # Deployment job
   deploy:
