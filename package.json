@@ -1,0 +1,15 @@
+{
+  "name": "linuxhub-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "kanaria <root@kanaria.me>",
+  "scripts": {
+    "upload": "ipfs-deploy -p pinata ./public",
+    "upload-ens": "ipfs-deploy -p pinata ens.html"
+  },
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "ipfs-deploy": "^12.0.1"
+  }
+}

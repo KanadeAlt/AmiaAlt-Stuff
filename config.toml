@@ -1,0 +1,47 @@
+baseURL = ""
+languageCode = "zh-cn"
+title = "KanariaAlt"
+theme = "github-style"
+# googleAnalytics = "UA-123456-789"
+pygmentsCodeFences = true
+pygmentsUseClasses = true
+
+[params]
+  author = "LinuxHub"
+  description = "In solitude, where we are least alone."
+  github = "LinuxHub-Group"
+#   facebook = "kanariaAlt"
+#   twitter = "kanariaAlt"
+#   linkedin = "kanariaAlt"
+#   instagram = "kanariaAlt"
+#   tumblr = "kanariaAlt"
+#   email = "kanariaAlt@gmail.com"
+  url = "https://github.com/mizuenaAlt"
+  keywords = "blog"
+  rss = true
+  lastmod = true
+  userStatusEmoji = "🥵"
+  favicon = "/images/github.png"
+  location = "Japan"
+  enableGitalk = true
+
+#   [params.gitalk]
+#     clientID = "Your client ID" 
+#     clientSecret = "Your client secret" 
+#     repo = "repo"
+#     owner = "kanariaAlt"
+#     admin = "kanariaAlt"
+#     id = "location.pathname"
+#     labels = "gitalk"
+#     perPage = 15
+#     pagerDirection = "last"
+#     createIssueManually = true
+#     distractionFreeMode = false
+
+#   [[params.links]]
+#     title = "Link2"
+#     href = "https://kanariaAlt.com"
+#     icon = "https://kanariaAlt.com/images/avatar.png"
+
+[frontmatter]
+  lastmod = ["lastmod", ":fileModTime", ":default"]
