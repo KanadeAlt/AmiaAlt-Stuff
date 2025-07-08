@@ -42,10 +42,17 @@ draft: false
 
 **Screenshots**
 
-![Home Screen](https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-1.jpg){: width="240"}{: height="540"}
-![Launcher](https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-2.jpg){: width="240"}{: height="540"}
-![Settings](https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-3.jpg){: width="240"}{: height="540"}
-![Settings About Phone](https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-4.jpg){: width="240"}{: height="540"}
+<tr>
+  <td>
+    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-1.jpg" width="240" height="540" align="left" />
+  </td>
+  <td>
+    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-2.jpg" width="240" height="540" align="center" />
+  </td>
+  <td>
+    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-4.jpg" width="240" height="540" align="right" />
+  </td>
+</tr>
 
 **Download**
 
