@@ -2,13 +2,13 @@
 relativeURLs = true
 languageCode = "zh-cn"
 title = "KanariaAlt"
-theme = "github-style"
+theme = "Kanaria"
 # googleAnalytics = "UA-123456-789"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
 [params]
-  searchURL = "https://linuxhub-group.gitlab.io"
+  searchURL = "https://github.com/mizuenaAlt"
   author = "0xKANARIA"
   description = "In solitude, where we are least alone."
   github = "mizuenaAlt"
@@ -22,7 +22,7 @@ pygmentsUseClasses = true
   keywords = "blog"
   rss = true
   lastmod = true
-  userStatusEmoji = "🥵"
+  userStatusEmoji = "❤️"
   favicon = "images/github.png"
   location = "Japan"
   enableGitalk = false
