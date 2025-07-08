@@ -23,8 +23,8 @@ pygmentsUseClasses = true
   rss = false
   lastmod = true
   userStatusEmoji = "❤️"
-  favicon = "https://avatars.githubusercontent.com/u/218332676?v=4"
-  location = "Japan"
+  favicon = "images/github.png"
+  location = "SEKAI"
   enableGitalk = false
 
 #   [params.gitalk]
