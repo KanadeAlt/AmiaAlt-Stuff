@@ -1,3 +1,8 @@
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
 # baseURL = "https://linuxhub-group.gitlab.io"
 relativeURLs = true
 languageCode = "zh-cn"
