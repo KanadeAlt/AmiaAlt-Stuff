@@ -4,7 +4,7 @@ date: 2024-10-05T19:57:25+08:00
 draft: false
 ---
 
-![Exthm Banner](/static/images/exthm.jpg)
+![Exthm Banner](https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/banner/exthm.jpg)
 
 {% include disclaimer.md %}
 
