@@ -23,7 +23,7 @@ pygmentsUseClasses = true
   rss = false
   lastmod = true
   userStatusEmoji = "❤️"
-  favicon = "https://github.com/mizuenaAlt/mizuena.github.io/blob/main/static/images/avatar.png"
+  favicon = "/static/images/avatar.png"
   location = "Japan"
   enableGitalk = false
 
