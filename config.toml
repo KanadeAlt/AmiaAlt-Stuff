@@ -2,7 +2,7 @@
 relativeURLs = true
 languageCode = "zh-cn"
 title = "KanariaAlt"
-theme = "Kanaria"
+theme = "github-style"
 # googleAnalytics = "UA-123456-789"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
