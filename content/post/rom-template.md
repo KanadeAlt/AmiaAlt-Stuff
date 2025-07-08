@@ -44,13 +44,13 @@ draft: false
 
 <tr>
   <td>
-    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-1.jpg" width="240" height="540" align="left" />
+    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-1.jpg" width="340" height="640" align="left" />
   </td>
   <td>
-    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-2.jpg" width="240" height="540" align="center" />
+    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-2.jpg" width="340" height="640" align="center" />
   </td>
   <td>
-    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-4.jpg" width="240" height="540" align="right" />
+    <img src="https://raw.githubusercontent.com/RennAlt/shenprjkt.github.io/refs/heads/wip-4.19-vince/assets/images/screenshots/2023/Maret/05/miku-4.jpg" width="340" height="640" align="right" />
   </td>
 </tr>
 
