@@ -20,10 +20,10 @@ pygmentsUseClasses = true
 #   email = "kanariaAlt@gmail.com"
   url = "https://github.com/mizuenaAlt"
   keywords = "blog"
-  rss = true
+  rss = false
   lastmod = true
   userStatusEmoji = "❤️"
-  favicon = "images/github.png"
+  favicon = "https://github.com/mizuenaAlt/mizuena.github.io/blob/main/static/images/avatar.png"
   location = "Japan"
   enableGitalk = false
 
