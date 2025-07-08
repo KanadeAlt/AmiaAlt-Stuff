@@ -15,7 +15,8 @@ draft: false
  */
 ```
 
-**DEVICES :** VINCE
+```shell
+**DEVICES** :VINCE**
 **BUILD DATE :** 05 Maret 2023
 **TYPE :** Gaaps Build
 
@@ -58,7 +59,7 @@ draft: false
 **Download**
 
 [Exthm_Vince-13.0-20230305-1517.zip](https://drive.google.com/file/d/1-lvZfze9TwtPFIfLVaWBeG9qem3wsqKo/view?pli=1)
-
+```
 
 
 
