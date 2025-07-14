@@ -3,7 +3,7 @@
 <table style="border:none">
 <tr>
   <td style="vertical-align: top">
-    <img width="300" alt="hello!" src="https://raw.githubusercontent.com/mizuenaAlt/mizuena.github.io/refs/heads/main/static/images/miku.gif" >
+    <img width="300" alt="hello!" src="https://raw.githubusercontent.com/ReallySnow/ReallySnow/refs/heads/master/assets/about.webp">
   </td>
 
   <td>
