@@ -1,5 +1,5 @@
 ---
-title: "Kernel-Snow-Irony-Vince"
+title: "Kernel-Snow-Irony-Vince-LPP"
 date: 2025-08-21T14:57:25+08:00
 draft: false
 ---
@@ -15,10 +15,8 @@ draft: false
  */
 ```
 
-
-**DEVICES** :VINCE
-
-**BUILD DATE :** 21 August 2025
+**DEVICES :** VINCE<br>
+**BUILD DATE :** 21 August 2025<br>
 
 **Changelog**
 <ul>
