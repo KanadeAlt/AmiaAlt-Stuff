@@ -39,9 +39,10 @@ draft: false
     <li>And More</li>
 </ul>
 
-## Datasheet
+## Snow-Irony Datasheet
 
 **CMA Reserved Memory Region**
+
 CMA (contiguous memory allocator) is a memory allocator within the kernel which allows allocating large chunks of memory with contiguous physical memory addresses.
 
 Reasons to increase CMA Region Size :
@@ -93,7 +94,80 @@ yes but we will run out of CMA memory too, but it doesn't happen often, i mainta
 [  149.950550] lowmemorykiller: Killing 'd.process.media' (2846) (tgid 2846), adj 999,\x0ato free 81288kB on behalf of 'kswapd0' (136) because\x0acache 321644kB is below limit 322560kB for oom score 950\x0aFree memory is 160548kB above reserved.\x0aFree CMA is 6008kB\x0aTotal reserve is 45148kB\x0aTotal free pages is 211900kB\x0aTotal file cache is 491188kB\x0aGFP mask is 0x24000c0
 ```
 Increasing the CMA reserved memory region is also one of Qualcomm's suggestions on this forum [Configure and manage memory qcom](https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-3/memory.html)
-thanks to @skhife @dnxnin on telegram for helping to solve this
+
+thanks to [@skhife](https://t.me/skhife) [@dnxnin](https://t.me/dnxnin) on telegram for helping to solve this
+
+**Undervolt CPU & PMIC Voltage**
+
+Undervolt is the process of reducing the voltage supplied to certain components such as CPU, GPU, PMIC.
+
+The impact of undervolt :
+- much better battery backup without affecting/deteriorating performance.
+- much better temperature.
+
+Bad effects of undervolt :
+- Each hardware has its own voltage limit value. If you lower the voltage incorrectly, it will have a bad impact on the hardware.
+
+I have almost all xiaomi-msm8953 devices and I noticed that the devices using MSM8953QRD + PMI8950 use higher voltage compared to MSM8953MTP + PMI8940. and mido, vince, rosy, daikura, tissot are QRD Devices and ysl, tiffany, oxygen are MTP devices
+
+Some Differences in the MSM8953 QRD & MSM8953 MTP Regulator Tables, see here :
+```
+ -----------------------------
+     MSM8953QRD Regulator
+ -----------------------------
+ PMIC Data     |      Voltage
+ -----------------------------
+ lab_reg       |      5.700V           
+ pm8953_l10    |      2.850V           
+ pm8953_l19    |      1.380V          
+ pm8953_l23    |      1.200V          
+```
+
+```
+ -----------------------------
+     MSM8953MTP Regulator
+ -----------------------------
+ PMIC Data     |      Voltage
+ -----------------------------
+ lab_reg       |      5.500V           
+ pm8953_l10    |      2.800V           
+ pm8953_l19    |      1.200V          
+ pm8953_l23    |      0.975V
+```
+
+so i applied `xiaomi-ysl` PMIC voltage to `xiaomi-vince` also some other undervolt PMIC look at this :
+```
+ -------------------------------------------------------------------------------------
+                         Vince-LPP LDO
+ -------------------------------------------------------------------------------------
+ PMIC Data     |           Voltage           |                Interface
+ -------------------------------------------------------------------------------------
+ lab_reg       |      5.700V -> 5.500V       |        Lab,IBB
+ pm8953_l6     |      1.800V -> 1.750v       |        MDSS, DSI PLL, Display
+ pm8953_l10    |      2.800V -> 2.750V       |        Sensor
+ pm8953_l19    |      1.380V -> 1.200V       |        WCNS
+ pm8953_l23    |      1.200V -> 0.975V       |
+```
+
+maybe it will be useful, some PM8953 LDO data :
+- S1 : ULT-SMPS (MSM Modem)
+- S2 : ULT-SMPS (MSM Core/Graphics)
+- S3 : HF-SMPS (Low-V LDO)
+- S4 : ULT-SMPS (High-V LDO)
+- S5 : FT-SMPS (MSM Prog)
+- S6 : FT-SMPS (MSM Prog)
+- L1 : NMOS-LDO (RF-IC)
+- L2 : NMOS-LDO (LPDDR2/3)
+- L3 : NMOS-LDO (VDDMX)
+- L4 : PMOS-LDO (RF-IC ,GPS)
+- L5 : PMOS-LDO (eMMC)
+- L6 : PMOS-LDO (MDSS, DSI PLL, Display)
+- L7 : PMOS-LDO (MSM Analog PLL)
+- L8 : PMOS-LDO (eMMC)
+- L9 : V-out= 3.3v -> VBAT -> 3.575V : V-out = 3v -> VBAT <- 3.575 V PMOS-LDO (WCN)
+- L10 : PMOS-LDO (Sensor)
+
+this is the original schema data of MSM8953 from QCOM : [MSM8953 Schematics](https://file.elecfans.com/web2/M00/0A/DF/pYYBAGD7uHOABTBQAA96XdA1FDw057.pdf)
 
 **Prerequisites**
 <ol>
