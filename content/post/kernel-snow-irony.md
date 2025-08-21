@@ -41,7 +41,7 @@ draft: false
 
 ## Snow-Irony Datasheet
 
-**CMA Reserved Memory Region**
+### CMA Reserved Memory Region**
 
 CMA (contiguous memory allocator) is a memory allocator within the kernel which allows allocating large chunks of memory with contiguous physical memory addresses.
 
@@ -97,10 +97,7 @@ Increasing the CMA reserved memory region is also one of Qualcomm's suggestions 
 
 thanks to [@skhife](https://t.me/skhife) [@dnxnin](https://t.me/dnxnin) on telegram for helping to solve this
 
-
-
-
-**Undervolt CPU & PMIC Voltage**
+### Undervolt CPU & PMIC Voltage
 
 Undervolt is the process of reducing the voltage supplied to certain components such as CPU, GPU, PMIC.
 
