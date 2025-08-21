@@ -39,6 +39,62 @@ draft: false
     <li>And More</li>
 </ul>
 
+## Datasheet
+
+**CMA Reserved Memory Region**
+CMA (contiguous memory allocator) is a memory allocator within the kernel which allows allocating large chunks of memory with contiguous physical memory addresses.
+
+Reasons to increase CMA Region Size :
+- GPU memory is often allocated from the CMA pool, which is a shared memory region.
+
+from my testing on the MSM8953 they have a CMA size of around 20MiB, look at this configuration :
+```bash
+linux,cma {
+  compatible = "shared-dma-pool";
+  alloc-ranges = <0x0 0x00000000 0x0 0xffffffff>;
+  reusable;
+  alignment = <0 0x400000>;
+  size = <0 0x1400000>;
+  linux,cma-default;
+};
+```
+
+it seems 20MiB is not good because we are always running out of CMA memory based on this log :
+```bash
+vince:/ # dmesg | grep -i cma
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000fdc00000, size 20 MiB
+[    0.000000] cma: Not enough slots for CMA reserved regions!
+[    0.000000] Reserved memory: unable to setup CMA region
+[    0.000000] Memory: 2597260K/2979840K available (17916K kernel code, 2678K rwdata, 7500K rodata, 4096K init, 3034K bss, 132724K reserved, 249856K cma-reserved)
+
+vince:/ # cat /proc/meminfo | grep Cma
+CmaTotal:         249856 kB
+CmaFree:               0 kB
+```
+
+Due to running out of CMA memory, the kernel floods the dmesg log with spam like this:
+```bash
+[24260.235503] cma: cma_alloc: alloc failed, req-size: 512 pages, ret: -12
+```
+
+to solve this problem i increased the size to <0 0x2000000> /32MiB and yes this proved to solve the problem see this :
+```bash
+vince:/ # dmesg | grep -i cma
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000fdc00000, size 32 MiB
+[    0.000000] Memory: 2597260K/2979840K available (17916K kernel code, 2678K rwdata, 7500K rodata, 4096K init, 3034K bss, 132724K reserved, 249856K cma-reserved)
+
+vince:/ # cat /proc/meminfo | grep Cma
+CmaTotal:         266240 kB
+CmaFree:           11184 kB
+```
+
+yes but we will run out of CMA memory too, but it doesn't happen often, i maintain lmk to work together and help each other see this is what lmk does:
+```bash
+[  149.950550] lowmemorykiller: Killing 'd.process.media' (2846) (tgid 2846), adj 999,\x0ato free 81288kB on behalf of 'kswapd0' (136) because\x0acache 321644kB is below limit 322560kB for oom score 950\x0aFree memory is 160548kB above reserved.\x0aFree CMA is 6008kB\x0aTotal reserve is 45148kB\x0aTotal free pages is 211900kB\x0aTotal file cache is 491188kB\x0aGFP mask is 0x24000c0
+```
+Increasing the CMA reserved memory region is also one of Qualcomm's suggestions on this forum [Configure and manage memory qcom](https://docs.qualcomm.com/bundle/publicresource/topics/80-70020-3/memory.html)
+thanks to @skhife @dnxnin on telegram for helping to solve this
+
 **Prerequisites**
 <ol>
     <li>Unlocked Bootloader</li>
