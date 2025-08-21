@@ -49,4 +49,4 @@ draft: false
 
 **Download**
 
-[bla.zip](https://drive.google.com/file/d/1-lvZfze9TwtPFIfLVaWBeG9qem3wsqKo/view?pli=1)
+[Kernel-Snow-Irony-Vince-LPP-SukiSU]([https://drive.google.com/file/d/1-lvZfze9TwtPFIfLVaWBeG9qem3wsqKo/view?pli=1](https://t.me/MI8953/16/5575))
