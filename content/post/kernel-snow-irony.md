@@ -41,7 +41,7 @@ draft: false
 
 ## Snow-Irony Datasheet
 
-### CMA Reserved Memory Region**
+### CMA Reserved Memory Region
 
 CMA (contiguous memory allocator) is a memory allocator within the kernel which allows allocating large chunks of memory with contiguous physical memory addresses.
 
