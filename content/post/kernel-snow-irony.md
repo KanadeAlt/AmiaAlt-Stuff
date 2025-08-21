@@ -97,6 +97,9 @@ Increasing the CMA reserved memory region is also one of Qualcomm's suggestions 
 
 thanks to [@skhife](https://t.me/skhife) [@dnxnin](https://t.me/dnxnin) on telegram for helping to solve this
 
+
+
+
 **Undervolt CPU & PMIC Voltage**
 
 Undervolt is the process of reducing the voltage supplied to certain components such as CPU, GPU, PMIC.
@@ -135,7 +138,7 @@ Some Differences in the MSM8953 QRD & MSM8953 MTP Regulator Tables, see here :
  pm8953_l23    |      0.975V
 ```
 
-so i applied `xiaomi-ysl` PMIC voltage to `xiaomi-vince` also some other undervolt PMIC look at this :
+so i applied the `xiaomi-ysl` PMIC voltage to the `xiaomi-vince` and also some other undervolt PMICs see this :
 ```
  -------------------------------------------------------------------------------------
                          Vince-LPP LDO
