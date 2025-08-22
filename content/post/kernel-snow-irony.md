@@ -172,10 +172,80 @@ A timer frequency of 100Hz means the interrupt will be triggered every 10 millis
 
 changing the Timer frequency is also one of the suggestions from source.android.com [Identify jitter-related jank](https://source.android.com/docs/core/tests/debug/jank_jitter#long_threads)
 
-**Prerequisites**
-<ol>
-    <li>Unlocked Bootloader</li>
-</ol>
+### Optimize boot times & Reduce CPU & GPU Overhead
+
+To make the device boot faster and reduce overhead CPU usage, I did some things suggested by source.android.com, such as disabling the UART Serial Console and removing drivers that are not useful for our device.
+
+To disable Serial Console do like this :
+```bash
+# CONFIG_SERIAL_EARLYCON is not set
+# CONFIG_SERIAL_MSM_CONSOLE is not set
+```
+
+also add this `console=null` in boot configuration, see this example :
+```bash
+chosen {
+    bootargs = "core_ctl_disable_cpumask=0-7 kpti=0 cgroup.memory=nokmem,nosocket cgroup_disable=pressure noirqdebug nodebugmon console=null";
+};
+```
+
+Disable some useless drivers for xiaomi-vince, look at this :
+```bash
+# EFI
+# CONFIG_EFI is not set
+
+# Unused CPU Drivers
+# CONFIG_ARCH_SDM450 is not set
+# CONFIG_ARCH_SDM632 is not set
+# CONFIG_CORESIGHT is not set
+# CONFIG_CORESIGHT_LINK_AND_SINK_TMC is not set
+# CONFIG_CORESIGHT_QCOM_REPLICATOR is not set
+# CONFIG_CORESIGHT_STM is not set
+# CONFIG_CORESIGHT_TPDA is not set
+# CONFIG_CORESIGHT_TPDM is not set
+# CONFIG_CORESIGHT_CTI is not set
+# CONFIG_CORESIGHT_EVENT is not set
+# CONFIG_CORESIGHT_HWEVENT is not set
+
+# Unused PMIC Drivers
+# CONFIG_SMB135X_CHARGER is not set
+# CONFIG_SMB1355_SLAVE_CHARGER is not set
+# CONFIG_SMB1351_USB_CHARGER is not set
+# CONFIG_QPNP_SMB5 is not set
+# CONFIG_QPNP_QG is not set
+# CONFIG_QPNP_TYPEC is not set
+# CONFIG_LEDS_QTI_TRI_LED is not set
+# CONFIG_LEDS_QPNP_VIBRATOR_LDO is not set
+
+# Unused Hardware Support
+# CONFIG_NFC_NQ is not set
+# CONFIG_INPUT_HBTP_INPUT is not set
+# CONFIG_SCSI_UFSHCD is not set
+# CONFIG_SCSI_UFSHCD_PLATFORM is not set
+# CONFIG_SCSI_UFS_QCOM is not set
+# CONFIG_SCSI_UFS_QCOM_ICE is not set
+
+# Debug
+# CONFIG_FB_MSM_MDSS_XLOG_DEBUG is not set
+# CONFIG_MSM_SMD_DEBUG is not set
+# CONFIG_RMNET_DATA_DEBUG_PKT is not set
+# CONFIG_MMC_PERF_PROFILING is not set
+# CONFIG_MSM_CAMERA_DEBUG is not set
+# CONFIG_MSMB_CAMERA_DEBUG is not set
+# CONFIG_IOMMU_DEBUG is not set
+# CONFIG_IOMMU_DEBUG_TRACKING is not set
+
+# Reduce size
+CONFIG_IKHEADERS=n
+CONFIG_SLUB_DEBUG=n
+```
+
+remove some things that GPU doesn't need see this commit reference : [81a0753](https://github.com/Snow-Irony/android_kernel_qcom_msm8953/commit/81a07535ef7285db4844f744b528073a807af114) [d87b07a](https://github.com/Snow-Irony/android_kernel_qcom_msm8953/commit/d87b07ab1150302c359bc72c9d3376b8dcb7e638) [3d2cfe9](https://github.com/Snow-Irony/android_kernel_qcom_msm8953/commit/3d2cfe962787dca659e89cf653fe6df924a492da)
+
+this change really makes the device boot faster in testing on vince exthmui rom, also reduces cpu overhead significantly :v
+
+This change is also a suggestion from source.android.com in this document [Optimize boot times android](https://source.android.com/docs/core/perf/boot-times)
+
 
 
 **Download**
