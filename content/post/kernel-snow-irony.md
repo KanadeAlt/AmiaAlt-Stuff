@@ -22,6 +22,7 @@ draft: false
 <ul>
     <li>SukiSU + SUSFS + KPM Intregrate</li>
     <li>Increase CMA region size 20MiB -> 32MiB (Qcom Sugestion)</li>
+    <li>Use prlmk for memory killer (@neophyte Sugestion)</li>
     <li>Undervolt 70mV CPU Voltage</li>
     <li>Undervolt PMIC Based On Xiaomi-YSL MSM8953MTP-PMI8940</li>
     <li>Update New Synaptic_TD4310 Touchscreen Drivers from msm-4.19</li>
@@ -97,6 +98,18 @@ Increasing the CMA reserved memory region is also one of Qualcomm's suggestions 
 
 thanks to [@skhife](https://t.me/skhife) [@dnxnin](https://t.me/dnxnin) on telegram for helping to solve this
 
+### Prlmk
+
+A memory-saving program for Android, based on the process reclaim driver. It's especially suitable for devices with 4GB of RAM or less. It replaces Android Low Memory Killer.
+
+prlmk configuration :
+```bash
+CONFIG_ANDROID_LOW_MEMORY_KILLER=n
+CONFIG_PRLMK=y
+```
+
+Yes, this is really much better than Android's low memory killer, thanks for the suggestion [@k4ngcaribug](https://t.me/k4ngcaribug)
+
 ### Undervolt CPU & PMIC Voltage
 
 Undervolt is the process of reducing the voltage supplied to certain components such as CPU, GPU, PMIC.
@@ -168,7 +181,12 @@ changing the Timer frequency is also one of the suggestions from source.android.
 
 ### Optimize boot times & Reduce CPU & GPU workload
 
-To make the device boot faster and reduce CPU workload, I did some things suggested by source.android.com, such as disabling the UART Serial Console and removing drivers that are not useful for our device.
+To make the device boot faster and reduce CPU workload, I did some things suggested by source.android.com, such as using lz4 on Ramdisk, disabling UART Serial Console and removing useless drivers for our device.
+
+change GZIP to LZ4 example configuration :
+```bash
+CONFIG_RD_LZ4=y
+```
 
 To disable Serial Console do like this :
 ```bash
@@ -321,6 +339,6 @@ Yes, all these changes really speed up booting, and also reduce CPU workload tes
 
 ## Download
 
-[Kernel-Snow-Irony-Vince-LPP-SukiSU.zip](https://t.me/MI8953/16/5575)
+[Kernel-Snow-Irony-Vince-LPP-SukiSU.zip](https://t.me/MI8953/16/5589)
 
 [SukiSU_v3.1.8_13250-release.apk](https://t.me/MI8953/16/5550)
