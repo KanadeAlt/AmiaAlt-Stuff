@@ -29,10 +29,10 @@ draft: false
     <li>Increase GPU Mempool size to 256K based on MSM8956/8976</li>
     <li>Kgsl drop Adreno 3xx/4xx/6xx & snapshot/corsight/trace (don't make Adreno 506 load some useless stuff lol)</li>
     <li>Reduced gpu jump busy penalty to 8000 nsec Based on MSM8956/8976</li>
-    <li>Disable Some Unused PMIC & CPU Drivers On Vince (Android Developer Sugestion)</li>
+    <li>Disable Some Unused PMIC & CPU Drivers On Vince (AOSP Sugestion)</li>
     <li>Drop Qcom mem_dump_v2 (no need to allocate mem_dump, we don't have much memory)</li>
     <li>Hardcode MSM8953 CLK (Reduce kernel & cpu workload)</li>
-    <li>Change tick rate to 300 HZ (Android Developer Sugestion)</li>
+    <li>Change tick rate to 300 HZ (AOSP Sugestion)</li>
     <li>Reduce rootwait time to 5ms (Samsung Sugestion)</li>
     <li>Disable some kernel debugs</li>
     <li>fix all errors in dmesg log</li>
@@ -163,6 +163,14 @@ this is the original schema data of MSM8953 from QCOM : [MSM8953 Schematics](htt
 yes MSM8953 can't oc more than 2.2Ghz, if you see MSM8953 device running above 2.2Ghz for example 3Ghz it is fake and just virtual or meme 3Ghz on old device lol
 
 see this from qcom scheme : [MSM8953 Specification](https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/qcom1.jpg)
+
+### CONFIG_HZ / Timer frequency
+
+An interrupt causes the CPU to temporarily stop the execution of the current process and allocate its resources to the process or hardware that issued the interrupt. For example, when you press the volume button, an interrupt is triggered by the volume button and the CPU then changes the volume level and displays the changed volume level on the screen. Similarly, interrupts are triggered when you touch the screen or press any hardware button. There is a time gap between two consecutive interrupts. We call this the timer frequency.
+
+A timer frequency of 100Hz means the interrupt will be triggered every 10 milliseconds and a timer frequency of 1000Hz means the interrupt will be triggered after 1 millisecond. Which one is better? 1000Hz will provide the lowest latency and smoothest experience. But it will increase overhead on CPU and increase battery consumption. 100Hz will keep CPU overhead minimal but may increase latency. In my tests on the Deco kernel on vince, reimu-lpp on ysl & tenshin on spesn, I didn't notice any lag caused by this change, but I did feel the battery lasted a little longer than usual. So, for now, stick with 300Hz.
+
+changing the Timer frequency is also one of the suggestions from source.android.com [Identify jitter-related jank](https://source.android.com/docs/core/tests/debug/jank_jitter#long_threads)
 
 **Prerequisites**
 <ol>
