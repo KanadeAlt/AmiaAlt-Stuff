@@ -150,7 +150,7 @@ so i applied the `xiaomi-ysl` PMIC voltage to the `xiaomi-vince` and also some o
 ```
 <tr>
   <td>
-    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/after.png" width="290" height="580" align="left" />
+    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/after.png" width="290" height="580" align="right" />
   </td>
 </tr>
 
@@ -162,16 +162,7 @@ this is the original schema data of MSM8953 from QCOM : [MSM8953 Schematics](htt
 
 yes MSM8953 can't oc more than 2.2Ghz, if you see MSM8953 device running above 2.2Ghz for example 3Ghz it is fake and just virtual or meme 3Ghz on old device lol
 
-see this from qcom scheme :
-<tr>
-  <td>
-    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/qcom1.jpg" align="left" />
-  </td>
-  <td>
-    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/qcom.jpg" align="right" />
-  </td>
-</tr>
-
+see this from qcom scheme : [MSM8953 Specification](https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/qcom1.jpg
 
 **Prerequisites**
 <ol>
