@@ -149,25 +149,18 @@ so i applied the `xiaomi-ysl` PMIC voltage to the `xiaomi-vince` and also some o
  pm8953_l23    |      1.200V -> 0.975V       |
 ```
 
-maybe it will be useful, some PM8953 LDO data :
-- S1 : ULT-SMPS (MSM Modem)
-- S2 : ULT-SMPS (MSM Core/Graphics)
-- S3 : HF-SMPS (Low-V LDO)
-- S4 : ULT-SMPS (High-V LDO)
-- S5 : FT-SMPS (MSM Prog)
-- S6 : FT-SMPS (MSM Prog)
-- L1 : NMOS-LDO (RF-IC)
-- L2 : NMOS-LDO (LPDDR2/3)
-- L3 : NMOS-LDO (VDDMX)
-- L4 : PMOS-LDO (RF-IC ,GPS)
-- L5 : PMOS-LDO (eMMC)
-- L6 : PMOS-LDO (MDSS, DSI PLL, Display)
-- L7 : PMOS-LDO (MSM Analog PLL)
-- L8 : PMOS-LDO (eMMC)
-- L9 : V-out= 3.3v -> VBAT -> 3.575V : V-out = 3v -> VBAT <- 3.575 V PMOS-LDO (WCN)
-- L10 : PMOS-LDO (Sensor)
+![PMIC](https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/after.png)
+
+and because of this change I managed to get a good battery backup, also a reduction in excessive heat :v
 
 this is the original schema data of MSM8953 from QCOM : [MSM8953 Schematics](https://file.elecfans.com/web2/M00/0A/DF/pYYBAGD7uHOABTBQAA96XdA1FDw057.pdf)
+
+### Overclocking MSM8953 over 2.2Ghz is a meme
+
+yes MSM8953 can't oc more than 2.2Ghz, if you see MSM8953 device running above 2.2Ghz for example 3Ghz it is fake and just virtual or meme 3Ghz on old device lol
+
+see this from qcom scheme :
+
 
 **Prerequisites**
 <ol>
