@@ -158,12 +158,6 @@ and because of this change I managed to get a good battery backup, also a reduct
 
 this is the original schema data of MSM8953 from QCOM : [MSM8953 Schematics](https://file.elecfans.com/web2/M00/0A/DF/pYYBAGD7uHOABTBQAA96XdA1FDw057.pdf)
 
-### Overclocking MSM8953 over 2.2Ghz is a meme
-
-yes MSM8953 can't oc more than 2.2Ghz, if you see MSM8953 device running above 2.2Ghz for example 3Ghz it is fake and just virtual or meme 3Ghz on old device lol
-
-see this from qcom scheme : [MSM8953 Specification](https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/qcom1.jpg)
-
 ### CONFIG_HZ / Timer frequency
 
 An interrupt causes the CPU to temporarily stop the execution of the current process and allocate its resources to the process or hardware that issued the interrupt. For example, when you press the volume button, an interrupt is triggered by the volume button and the CPU then changes the volume level and displays the changed volume level on the screen. Similarly, interrupts are triggered when you touch the screen or press any hardware button. There is a time gap between two consecutive interrupts. We call this the timer frequency.
@@ -172,9 +166,9 @@ A timer frequency of 100Hz means the interrupt will be triggered every 10 millis
 
 changing the Timer frequency is also one of the suggestions from source.android.com [Identify jitter-related jank](https://source.android.com/docs/core/tests/debug/jank_jitter#long_threads)
 
-### Optimize boot times & Reduce CPU & GPU Overhead
+### Optimize boot times & Reduce CPU & GPU workload
 
-To make the device boot faster and reduce overhead CPU usage, I did some things suggested by source.android.com, such as disabling the UART Serial Console and removing drivers that are not useful for our device.
+To make the device boot faster and reduce CPU workload, I did some things suggested by source.android.com, such as disabling the UART Serial Console and removing drivers that are not useful for our device.
 
 To disable Serial Console do like this :
 ```bash
@@ -242,12 +236,90 @@ CONFIG_SLUB_DEBUG=n
 
 remove some things that GPU doesn't need see this commit reference : [81a0753](https://github.com/Snow-Irony/android_kernel_qcom_msm8953/commit/81a07535ef7285db4844f744b528073a807af114) [d87b07a](https://github.com/Snow-Irony/android_kernel_qcom_msm8953/commit/d87b07ab1150302c359bc72c9d3376b8dcb7e638) [3d2cfe9](https://github.com/Snow-Irony/android_kernel_qcom_msm8953/commit/3d2cfe962787dca659e89cf653fe6df924a492da)
 
-this change really makes the device boot faster in testing on vince exthmui rom, also reduces cpu overhead significantly :v
-
 This change is also a suggestion from source.android.com in this document [Optimize boot times android](https://source.android.com/docs/core/perf/boot-times)
 
+Drop qcom mem dump v2 (since we don't have much memory, deleting this can also speed up booting since we don't need to create mem_dump_region on reserved memory which we know reserved memory is loaded first during boot)
 
+Detailed log reserved memory in dmesg :
+```bash
+vince:/ # dmesg | grep -i Reserved memory
+[    0.000000] Reserved memory: created CMA memory pool at 0x000000008f800000, size 8 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000c7800000, size 8 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000ff000000, size 16 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000fdc00000, size 20 MiB
+[    0.000000] OF: reserved mem: initialized node linux,cma, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000f2800000, size 180 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000f2400000, size 4 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000f2000000, size 4 MiB
+[    0.000000] Reserved memory: created CMA memory pool at 0x00000000f1c00000, size 4 MiB
+```
 
-**Download**
+Disabled qcom mem dump v2 look at this :
+```bash
+# CONFIG_QCOM_MEMORY_DUMP_V2 is not set
+```
+
+Drop qcom mem dump v2 on DTS :
+```bash
+dump_mem: mem_dump_region {
+    compatible = "shared-dma-pool";
+    reusable;
+    size = <0 0x400000>;
+};
+
+mem_dump {
+    compatible = "qcom,mem-dump";
+    memory-region = <&dump_mem>;
+
+    rpm_sw_dump {
+        qcom,dump-size = <0x28000>;
+        qcom,dump-id = <0xea>;
+    };
+
+    pmic_dump {
+        qcom,dump-size = <0x10000>;
+        qcom,dump-id = <0xe4>;
+    };
+
+    vsense_dump {
+        qcom,dump-size = <0x10000>;
+        qcom,dump-id = <0xe9>;
+    };
+
+    tmc_etf_dump {
+        qcom,dump-size = <0x10000>;
+        qcom,dump-id = <0xf0>;
+    };
+
+    tmc_etr_reg_dump {
+        qcom,dump-size = <0x1000>;
+        qcom,dump-id = <0x100>;
+    };
+
+    tmc_etf_reg_dump {
+        qcom,dump-size = <0x1000>;
+        qcom,dump-id = <0x101>;
+    };
+
+    misc_data_dump {
+        qcom,dump-size = <0x1000>;
+        qcom,dump-id = <0xe8>;
+    };
+};
+```
+
+reduce rootwait time to 5ms (Samsung Sugestion)
+
+For several devices, the rootwait time is sensitive because it directly
+affects booting time.  The polling interval of rootwait is currently
+100ms.  To save unnessesary waiting time, reduce the polling interval to
+5 ms.
+
+reference : [beffec8](https://github.com/Snow-Irony/android_kernel_qcom_msm8953/commit/beffec86f272e3e401ad0e6f14fd03c2005eab13)
+
+Yes, all these changes really speed up booting, and also reduce CPU workload test on vince-exthmui also android 16 btw :v
+
+## Download
 
 [Kernel-Snow-Irony-Vince-LPP-SukiSU.zip](https://t.me/MI8953/16/5575)
+[SukiSU_v3.1.8_13250-release.apk](https://t.me/MI8953/16/5550)
