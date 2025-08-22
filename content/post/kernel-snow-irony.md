@@ -150,7 +150,7 @@ so i applied the `xiaomi-ysl` PMIC voltage to the `xiaomi-vince` and also some o
 ```
 <tr>
   <td>
-    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/after.png" width="290" height="580" align="right" />
+    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/after.png" width="290" height="580" align="center" />
   </td>
 </tr>
 
