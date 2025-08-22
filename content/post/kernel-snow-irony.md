@@ -148,8 +148,11 @@ so i applied the `xiaomi-ysl` PMIC voltage to the `xiaomi-vince` and also some o
  pm8953_l19    |      1.380V -> 1.200V       |        WCNS
  pm8953_l23    |      1.200V -> 0.975V       |
 ```
-
-![PMIC](https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/after.png)
+<tr>
+  <td>
+    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/after.png" width="290" height="580" align="left" />
+  </td>
+</tr>
 
 and because of this change I managed to get a good battery backup, also a reduction in excessive heat :v
 
@@ -160,6 +163,14 @@ this is the original schema data of MSM8953 from QCOM : [MSM8953 Schematics](htt
 yes MSM8953 can't oc more than 2.2Ghz, if you see MSM8953 device running above 2.2Ghz for example 3Ghz it is fake and just virtual or meme 3Ghz on old device lol
 
 see this from qcom scheme :
+<tr>
+  <td>
+    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/qcom1.jpg" align="left" />
+  </td>
+  <td>
+    <img src="https://raw.githubusercontent.com/mizuenaAlt/Amia-Lab/refs/heads/main/qcom.jpg" align="right" />
+  </td>
+</tr>
 
 
 **Prerequisites**
