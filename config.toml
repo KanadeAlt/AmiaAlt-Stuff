@@ -1,24 +1,24 @@
 # baseURL = "https://linuxhub-group.gitlab.io"
 relativeURLs = true
 languageCode = "zh-cn"
-title = "KanariaAlt"
+title = "RenzAlt"
 theme = "github-style"
 # googleAnalytics = "UA-123456-789"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 
 [params]
-  searchURL = "https://github.com/mizuenaAlt"
-  author = "0xKANARIA"
-  description = "In solitude, where we are least alone."
-  github = "mizuenaAlt"
+  searchURL = "https://github.com/KanadeAlt"
+  author = "RenzAlt"
+  description = "likes cute and kawaii things <3."
+  github = "RenzAlt"
 #   facebook = "kanariaAlt"
 #   twitter = "kanariaAlt"
 #   linkedin = "kanariaAlt"
 #   instagram = "kanariaAlt"
 #   tumblr = "kanariaAlt"
 #   email = "kanariaAlt@gmail.com"
-  url = "https://github.com/mizuenaAlt"
+  url = "https://github.com/KanadeAlt"
   keywords = "blog"
   rss = false
   lastmod = true
