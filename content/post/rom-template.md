@@ -4,7 +4,7 @@ date: 2024-10-05T19:57:25+08:00
 draft: false
 ---
 
-![Alts Banner](https://raw.githubusercontent.com/RennAlt/project-banner/refs/heads/android-12.1/Alts-Mi8953-Banner.jpg)
+![Alts Banner](https://raw.githubusercontent.com/KanadeAlt/RenzAlt-Banner/refs/heads/main/20250906_172035.jpg)
 
 ```csharp
 /*
