@@ -26,6 +26,14 @@ pygmentsUseClasses = true
   favicon = "images/github.png"
   location = "SEKAI"
   enableGitalk = false
+  enableGiscus = true
+
+[params.giscus]
+    repo = ""
+    repo_id = ""
+    category = "Show and tell"
+    category_id = "DIC_kwDOIItJPM4CR1Sn"
+    lang = "en"
 
 #   [params.gitalk]
 #     clientID = "Your client ID" 
